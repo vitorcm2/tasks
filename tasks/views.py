@@ -13,14 +13,14 @@ from django.views.decorators.csrf import csrf_exempt
 # def index(request):
 #     return HttpResponse("Hello, world. You're at the tasks index.")
 
-@csrf_exempt
+
 def get_all_tasks(request):
     if request.method == 'GET':
         tasks = Task.objects.all()
         tasks_list = serializers.serialize("json",tasks)
         return HttpResponse(tasks_list,content_type="application/json")
 
-@csrf_exempt
+
 def get_task(request,task_id):
     if request.method == 'GET':
         try:
