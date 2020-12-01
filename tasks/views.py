@@ -5,13 +5,12 @@ from django.core import serializers
 from tasks.serializer import TaskSerializer
 from rest_framework.parsers import JSONParser
 from django.forms.models import model_to_dict
-from django.views.decorators.csrf import csrf_exempt
 
 
 
-# Create your views here.
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the tasks index.")
+Create your views here.
+def index(request):
+    return HttpResponse("Hello, world. You're at the tasks index.")
 
 
 def get_all_tasks(request):
@@ -29,7 +28,6 @@ def get_task(request,task_id):
         except:
             return Http404("Id não encontrado")
         
-@csrf_exempt
 def edit_task(request,task_id):
     if request.method == 'PUT':
         try:
@@ -44,7 +42,6 @@ def edit_task(request,task_id):
             return Http404("Id não encontrado")
             
             
-@csrf_exempt
 def delete_task(request, task_id):
     if request.method == "DELETE":
         try:
@@ -55,7 +52,6 @@ def delete_task(request, task_id):
         except:
             return Http404("Id não encontrado")
         
-@csrf_exempt
 def create_task(request):
     if request.method == "POST":
         request_data = JSONParser().parse(request)
