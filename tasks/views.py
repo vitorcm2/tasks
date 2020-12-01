@@ -21,7 +21,6 @@ def get_all_tasks(request):
 
 @api_view(["GET"])
 def get_task(request,task_id):
-    if request.method == 'GET':
         try:
             task = Task.objects.get(pk=task_id)
             return JsonResponse(model_to_dict(task),safe=False)
