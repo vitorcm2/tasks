@@ -6,12 +6,13 @@ from tasks.serializer import TaskSerializer
 from rest_framework.parsers import JSONParser
 from django.forms.models import model_to_dict
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 
 
 #Create your views here.
 # def index(request):
 #     return HttpResponse("Hello, world. You're at the tasks index.")
-
+@csrf_exempt
 @api_view(["GET"])
 def get_all_tasks(request):
 
@@ -27,6 +28,7 @@ def get_all_tasks(request):
 #             return JsonResponse(model_to_dict(task),safe=False)
 #         except:
 #             return Http404("Id não encontrado")
+@csrf_exempt
 @api_view(["PUT"])  
 def edit_task(request,task_id):
 
@@ -41,6 +43,7 @@ def edit_task(request,task_id):
         except:
             return Http404("Id não encontrado")
             
+@csrf_exempt
 @api_view(["DELETE"])
 def delete_task(request, task_id):
 
@@ -51,7 +54,7 @@ def delete_task(request, task_id):
         
         except:
             return Http404("Id não encontrado")
-
+@csrf_exempt
 @api_view(["POST"])     
 def create_task(request):
 
