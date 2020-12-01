@@ -7,6 +7,7 @@ from rest_framework.parsers import JSONParser
 from django.forms.models import model_to_dict
 
 
+
 # Create your views here.
 def index(request):
     return HttpResponse("Hello, world. You're at the tasks index.")
@@ -52,7 +53,7 @@ def delete_task(request, task_id):
 def create_task(request):
     if request.method == "POST":
         request_data = JSONParser().parse(request)
-        task = TaskSerializer(request_data)
+        task = TaskSerializer(data=request_data)
         if task.is_valid():
             task.save()
             return JsonResponse(task.data,safe=False,status=201)
