@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, JsonResponse
 from tasks.models import Task
 from django.core import serializers
-from serializer import TaskSerializer
+from tasks.serializer import TaskSerializer
 from rest_framework.parsers import JSONParser
 from django.forms.models import model_to_dict
 
